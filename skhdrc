@@ -1,0 +1,50 @@
+# Open terminal
+alt - return : open -na /Applications/Kitty.app
+
+# Layout
+alt - s : yabai -m space --layout stack
+alt - d : yabai -m space --layout bsp
+alt - f : yabai -m space --layout float
+
+# Window Navigation
+alt - h : yabai -m window --focus west || yabai -m window --focus stack.prev
+alt - left : yabai -m window --focus west || yabai -m window --focus stack.prev
+alt - j : yabai -m window --focus south || yabai -m window --focus stack.last
+alt - down : yabai -m window --focus south || yabai -m window --focus stack.last
+alt - k : yabai -m window --focus north || yabai -m window --focus stack.first
+alt - up : yabai -m window --focus north || yabai -m window --focus stack.first
+alt - l : yabai -m window --focus east || yabai -m window --focus stack.next
+alt - right : yabai -m window --focus east || yabai -m window --focus stack.next
+
+# Moving windows
+shift + alt - h : yabai -m window --warp west
+shift + alt - left : yabai -m window --warp west
+shift + alt - j : yabai -m window --warp south
+shift + alt - down : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - up : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east
+shift + alt - right : yabai -m window --warp east
+
+lctrl + alt - 1 : yabai -m window --space 1
+lctrl + alt - 2 : yabai -m window --space 2
+lctrl + alt - 3 : yabai -m window --space 3
+lctrl + alt - 4 : yabai -m window --space 4
+
+# Rotate windows clockwise and anticlockwise
+alt - r         : yabai -m space --rotate 270
+shift + alt - r : yabai -m space --rotate 90
+
+# Float / Unfloat window
+shift + alt - space : \
+    yabai -m window --toggle float; \
+    yabai -m window --toggle border
+
+# Restart Yabai
+shift + lctrl + alt - r : \
+    /usr/bin/env osascript <<< \
+        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+# Make window native fullscreen
+shift + alt - f         : yabai -m window --toggle zoom-fullscreen
